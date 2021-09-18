@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NewInstaApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-light bg-light d-flex">
+      <div class="container">
+        <div class="logo">
+          <a class="navbar-brand" href="<%= root_path %>">
+            <%= image_tag'instagram.png', style: "width:10%;height:10%" %>
+            Instagram
+          </a>
+          <p class="navbar-text float-right">
+            <% if current_user %>  
+              Logged in as <%= current_user.email %>.  
+              <%= link_to "Log Out", logout_path %>  
+            <% else %>  
+              <%= link_to "Sign Up", signup_path %> or  
+              <%= link_to "Log In", login_path %>  
+            <% end %>  
+          </p>
+        </div>
+      </div>
+    </nav>
+    
+    <%= yield %>
+  </body>
+</html>
